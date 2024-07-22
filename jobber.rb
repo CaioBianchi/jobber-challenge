@@ -45,6 +45,11 @@ def nextVersion(version)
   parts.join('.')
 end
 
+# Alternative solution to the above with Ruby's native succ method that will replicate the logic for incrementing versions
+def nextVersion_alternative(version)
+  version.succ
+end
+
 class TestNextVersion < Minitest::Test
   def test_next_version
     assert_equal "1.2.4", nextVersion("1.2.3")
