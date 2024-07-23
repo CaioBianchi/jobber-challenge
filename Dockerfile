@@ -9,6 +9,3 @@ COPY . .
 
 # Install any needed gems
 RUN gem install minitest
-
-# Run the tests when the container launches
-CMD ["ruby", "jobber.rb"]

@@ -1,0 +1,11 @@
+services:
+  next-version:
+    build: .
+    command: ruby next_version_test.rb
+    volumes:
+      - .:/usr/src/app
+  spiral:
+    build: .
+    command: ruby create_spiral_test.rb
+    volumes:
+      - .:/usr/src/app
