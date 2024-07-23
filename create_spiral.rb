@@ -1,20 +1,20 @@
-=begin
-Spiral
+# Spiral
+#
+# Description:
+# Your objective is to complete a function createSpiral(n) that receives an integer n and returns a two-dimensional array where numbers from 1 to n2 should be represented as clockwise spiral.
+#
+# Challenge:
+# Return an empty array if n < 1
 
-Description:
-Your objective is to complete a function createSpiral(N) that receives an integer N and returns a two-dimensional array where numbers from 1 to N2 should be represented as clockwise spiral.
+def createSpiral(n)
+  return [] if n < 1
 
-Challenge:
-Return an empty array if N < 1
-=end
-
-def createSpiral(N)
-  return [] if N < 1
-
-  spiral = Array.new(N) { Array.new(N) }
+  spiral = Array.new(n) { Array.new(n) }
   num = 1
-  left, top = 0, 0
-  right, bottom = N - 1, N - 1
+  left = 0
+  top = 0
+  right = n - 1
+  bottom = n - 1
 
   while left <= right && top <= bottom
     # Fill top row
@@ -33,7 +33,7 @@ def createSpiral(N)
 
     # Fill bottom row
     if top <= bottom
-      (right.downto(left)).each do |i|
+      right.downto(left).each do |i|
         spiral[bottom][i] = num
         num += 1
       end
@@ -41,13 +41,13 @@ def createSpiral(N)
     end
 
     # Fill left column
-    if left <= right
-      (bottom.downto(top)).each do |i|
-        spiral[i][left] = num
-        num += 1
-      end
-      left += 1
+    next unless left <= right
+
+    bottom.downto(top).each do |i|
+      spiral[i][left] = num
+      num += 1
     end
+    left += 1
   end
 
   spiral
